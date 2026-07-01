@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Its a trap bebe</title>
+<style>
+    body {
+            margin:0;
+            overflow:hidden;
+            font-family: sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#f1c1d9;
+        }
+
+     #container {
+            text-align: center;
+        }
+
+    h1 {
+
+            color: rgb(235, 68, 171);
+        }
+
+    #Yes {
+            color: antiquewhite;
+            background-color: #00b427;
+        }
+
+    #No {
+            color: antiquewhite;
+            background-color: #ff0707;
+            position:absolute
+        }
+
+    #proceed {
+            color: antiquewhite;
+            background-color: #00b427;
+        }
+
+    #message{
+             font-size:40px;
+             color:#ff1493;
+             font-weight: bold;
+         }
+
+    button {
+        padding:15px 35px;
+        font-size:20px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        margin:10px;
+         }
+            
+</style>
+
+</head> 
+
+ <body>
+                
+            <div id="h1">
+                <h1>Will you marry me?👩‍❤️‍👨💍🧎 💍🧎❓ ❤</h1>
+                    
+                <button id="Yes"> Yes 😊 </button>
+                <button id="No"> No 😭 </button>
+
+                <div id="message"></div>
+            </div>
+
+            <script>
+            const noBtn = document.getElementById("No");
+            const yesBtn = document.getElementById("Yes");
+
+            function moveButton() {
+                const maxX = window.innerWidth - noBtn.offsetWidth;
+                const maxY = window.innerHeight - noBtn.offsetHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noBtn.style.left = randomX + "px";
+                noBtn.style.top = randomY + "px";
+            }
+
+            // Move whenever the mouse gets close
+            document.addEventListener("mousemove", function(e){
+                const noBtnRect = noBtn.getBoundingClientRect();
+                const distanceX = e.clientX - (noBtnRect.left + noBtnRect.width / 2);
+                const distanceY = e.clientY - (noBtnRect.top + noBtnRect.height / 2);
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                if(distance < 100){
+                    moveButton();
+                }
+            });
+
+
+
+            // Also move on click (just in case)
+            noBtn.addEventListener("click", function(e){
+                e.preventDefault();
+                moveButton();
+            });
+
+            // Yes button
+            yesBtn.addEventListener("click", function(){
+                document.body.innerHTML = `
+                    <div style="
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        height:100vh;
+                        font-family:Arial,sans-serif;
+                        font-size:50px;
+                        background: rgb(235, 68, 171)
+                        color:#ff1493;
+                        text-align:center;
+                    ">
+                        💖 Congrats! You're married with me now! 💍
+                    </div>
+                
+                `;
+            });
+
+            </script>
+
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Dino Game</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    touch-action:manipulation;
+}
+
+body{
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(#87CEEB,#BDEBFF);
+}
+
+#game{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+#ground{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:80px;
+    background:#58b957;
+}
+
+#dino{
+    position:absolute;
+    left:70px;
+    bottom:80px;
+    width:50px;
+    height:50px;
+    background:#7a2cff;
+    border-radius:12px;
+}
+
+#dino::before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    right:8px;
+    top:12px;
+}
+
+.cactus{
+    position:absolute;
+    width:25px;
+    height:60px;
+    background:#228B22;
+    bottom:80px;
+    border-radius:4px;
+}
+
+#score{
+    position:absolute;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    font-weight:bold;
+}
+
+#highScore{
+    position:absolute;
+    top:50px;
+    left:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+    z-index:100;
+}
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+<div id="score">Score: 0</div>
+<div id="highScore">High Score: 0</div>
+
+<div id="dino"></div>
+
+<div id="ground"></div>
+
+<div id="overlay">
+Tap To Start Po Wifey 😘🥰
+</div>
+
+</div>
+
+<script>
+
+const game=document.getElementById("game");
+const dino=document.getElementById("dino");
+const overlay=document.getElementById("overlay");
+const scoreText=document.getElementById("score");
+const highScoreText=document.getElementById("highScore");
+
+let highScore=Number(localStorage.getItem("HighScore"))||0;
+highScoreText.innerHTML="High Score: "+highScore;
+
+let started=false;
+let gameOver=false;
+
+let y=0;
+let velocity=0;
+const gravity=0.8;
+
+let jumping=false;
+
+let score=0;
+
+function jump(){
+
+if(gameOver){
+
+location.reload();
+return;
+
+}
+
+if(!started){
+
+started=true;
+overlay.style.display="none";
+spawnCactus();
+
+}
+
+if(jumping)return;
+
+jumping=true;
+velocity=-15;
+
+}
+
+function spawnCactus(){
+
+if(gameOver)return;
+
+const cactus=document.createElement("div");
+
+cactus.className="cactus";
+cactus.style.left=window.innerWidth+"px";
+
+game.appendChild(cactus);
+
+let x=window.innerWidth;
+
+const move=setInterval(()=>{
+
+if(gameOver){
+
+clearInterval(move);
+cactus.remove();
+return;
+
+}
+
+x-=8;
+
+cactus.style.left=x+"px";
+
+if(x<-30){
+
+clearInterval(move);
+cactus.remove();
+
+}
+
+const d=dino.getBoundingClientRect();
+const c=cactus.getBoundingClientRect();
+
+if(
+d.left<c.right &&
+d.right>c.left &&
+d.top<c.bottom &&
+d.bottom>c.top
+){
+
+gameOver=true;
+
+overlay.style.display="flex";
+overlay.innerHTML="Oops!<br><br><span style='font-size:24px'>Tap To restart Po Wifey 😘🥰</span>";
+
+}
+
+},20);
+
+setTimeout(spawnCactus,1700);
+
+}
+
+function gameLoop(){
+
+if(started && !gameOver){
+
+velocity+=gravity;
+y+=velocity;
+
+if(y>0){
+
+y=0;
+velocity=0;
+jumping=false;
+
+}
+
+dino.style.transform=`translateY(${y}px)`;
+
+score++;
+
+let current=Math.floor(score/10);
+
+scoreText.innerHTML="Score: "+current;
+
+if(current>highScore){
+
+highScore=current;
+localStorage.setItem("HighScore",highScore);
+
+}
+
+highScoreText.innerHTML="High Score: "+highScore;
+
+}
+
+requestAnimationFrame(gameLoop);
+
+}
+
+document.addEventListener("touchstart",e=>{
+
+e.preventDefault();
+jump();
+
+},{passive:false});
+
+document.addEventListener("mousedown",jump);
+
+document.addEventListener("keydown",e=>{
+
+if(e.code==="Space"){
+
+e.preventDefault();
+jump();
+
+}
+
+});
+
+gameLoop();
+
+</script>
+
+</body>
+</html>
