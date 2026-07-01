@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+/* navbar styling */
+.navbar{
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
+
+}
+.navbar.sticky {
+    padding: 15px 0;
+    background:crimson; 
+}
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.navbar .logo a {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.navbar .logo a span {
+    color: crimson;
+}
+
+.navbar.sticky .logo a span {
+    color: white;
+}
+
+.navbar .menu li {
+    list-style-type: none;
+    display: inline-block;
+
+}
+
+.navbar .menu li a {
+    color: white; 
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu li a:hover {
+    color: crimson;
+}
+
+.navbar.sticky .menu li a:hover {
+    color: rgb(255, 255, 255);
+}
+/* menu btn styling */
+.menu-btn {
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+
+
+/* home section styling */
+
+.home {
+    font-family: 'Ubuntu', sans-serif;
+    background: url("Images/black.jpg");
+    height: auto;
+    min-height: auto;
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 100px;
+    padding-bottom: 500px;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+
+.home .home-content {
+    max-width: auto; 
+    background-color: inherit; 
+    border-radius: 8px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+.home .home-content .box {
+    border: 2px solid rgb(255, 255, 255);
+    padding: 20px;
+    background-color: black;
+    min-height: 200px;
+    min-width: 200px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+/* responsive media query start */
+
+@media (max-width: 1104px) {
+    .home .max-width {
+        margin-left: 0px;
+    }
+    
+}
+
+@media (max-width: 991px) {
+    .max-width {
+        padding:0 50px;
+    }
+
+}
+
+@media (max-width: 947px){
+    .max-width {
+         padding: 0 50px;
+    }
+    .menu-btn {
+    display: block;
+    z-index: 999;
+    }
+
+    .menu-btn i.active:before {
+        content:"\f00d";
+    }
+
+    .navbar .menu {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background-color: black;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s east;
+
+    }
+    .navbar .menu.active {
+        left: 0;
+    }
+    .navbar .menu li {
+        display: block;
+    }
+    .navbar .menu li a {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+}
+
+@media (max-width: 690px) {
+    
+    .max-width {
+         padding: 0 23px;
+    }
+}
+
+@media (max-width: 500px) {
+    
+    .max-width {
+         padding: 0 23px;
+    }
+}
+
+}
