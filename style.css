@@ -95,7 +95,7 @@
 }
 
 .home .home-content {
-    border: 3px solid darkorange; 
+    border: 3px solid crimson; 
     padding: 30px; 
     max-width: auto; 
     background-color: inherit; 
@@ -118,7 +118,7 @@
 }
 
 .home .home-content .text-3 span {
-    color:darkorange;
+    color:crimson;
     font-weight: 500;
 }
 

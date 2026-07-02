@@ -8,45 +8,122 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "tc8kPPw35508TSDqV",
+        });
+    })();
+    </script>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="max-width">
-            <div class="logo"><a href="#">My Proj<span>ects.</span></a></div>
+            <div class="logo"><a href="#">My Con<span>tact.</span></a></div>
+
             <ul class="menu">
                 <li><a href="../index.html">🏡 Home</a></li>
-                <li><a href="../Details/VensResume2026.pdf">📝 My Resume</a></li>
+                <li><a href="../Details/VensResume2026.pdf" >📝 My Resume</a></li>
                 <li><a href="../Home-Projects/projectpage.html">⚙️ Projects</a></li>
                 <li><a href="../Home-Contact/contactpage.html">📞 Contact</a></li>
             </ul>
+
             <div class="menu-btn">
                 <i class="fa fa-bars"></i>
             </div>
         </div>
     </nav>
 
-    
-
-    <!-- home section start -->
     <section class="home" id="home">
+
         <div class="max-width">
+
             <h1 class="title">Contact Me</h1>
-            <div class="home-content">
-                <div class="box">
-                    No content yet.
+
+            <div class="contact-container">
+
+                <!-- Left Side -->
+                <div class="contact-info">
+
+                    <h2>Let's Connect!</h2>
+
+                    <p>
+                        Hello! I'm <strong>Vens</strong>, an ICT student learning programming and web development.
+                        Feel free to contact me if you have questions, projects, or just want to say hi!
+                    </p>
+
+                    <div class="info-box">
+                        <i class="fa fa-user"></i>
+                        <span>Vens</span>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fa fa-envelope"></i>
+                        <span>escuetalorevens16@email.com</span>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fa fa-phone"></i>
+                        <span>+63 936 632 2851</span>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fa fa-map-marker"></i>
+                        <span>4a Katarungan St. Batasan Hills, Quezon City, Philippines</span>
+                    </div>
+
+                    <div class="socials">
+
+                        <a href="https://www.facebook.com/lorevens.salinasescueta" target="_blank"><i class="fa fa-facebook"></i></a>
+
+                        <a href="https://github.com/escuetalorevens16-sys" target="_blank"><i class="fa fa-github"></i></a>
+
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+
+                    </div>
+
                 </div>
+
+                <!-- Right Side -->
+
+                <div class="contact-form">
+
+                    <h2>Send Me a Message</h2>
+
+                    <form>
+
+                        <input type="text" placeholder="Your Name" required id="name">
+
+                        <input type="email" placeholder="Your Email" required id="email">
+
+                        <input type="text" placeholder="Subject" id="subject">
+
+                        <textarea rows="6" placeholder="Write your message..." required id="message"></textarea>
+
+                        <button type="submit" onclick="sendEmail()">Send Message</button>
+
+                    </form>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
-    
 
+    <footer>
+        <p>Hi, I'm Vens, an ICT student learning programming.</p>
+        <p>© 2026 All Rights Reserved.</p>
+    </footer>
 
-    <p>Hi Iam Vens, an ict student learning programming</p>
-    <p>Page created @2026</p>
     <script src="script.js"></script>
-
-   
 
 </body>
 </html>
